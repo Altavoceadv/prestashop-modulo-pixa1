@@ -1,0 +1,796 @@
+/**
+ * Admin CSS Styles - views/css/admin.css
+ * Custom Product Configurator Admin Panel Styles
+ */
+
+/* ==========================================================================
+   ADMIN VARIABLES & BASE
+   ========================================================================== */
+
+:root {
+    --admin-primary: #25b9d7;
+    --admin-secondary: #6c7b7f;
+    --admin-success: #72c02c;
+    --admin-warning: #f47f00;
+    --admin-danger: #e74c3c;
+    --admin-info: #5bc0de;
+    --admin-text: #555555;
+    --admin-border: #e5e5e5;
+    --admin-bg: #f4f4f4;
+    --admin-white: #ffffff;
+    --admin-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --admin-transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   MAIN CONFIGURATION PANEL
+   ========================================================================== */
+
+#custom-product-configuration {
+    margin-bottom: 20px;
+}
+
+#custom-product-configuration .panel-heading {
+    background: linear-gradient(135deg, var(--admin-primary), var(--admin-secondary));
+    color: var(--admin-white);
+    border: none;
+    padding: 15px 20px;
+}
+
+#custom-product-configuration .panel-heading h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#custom-product-configuration .panel-heading i {
+    margin-right: 8px;
+}
+
+.panel-heading-action {
+    float: right;
+    margin-top: -5px;
+}
+
+.panel-heading-action .list-toolbar-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--admin-white);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: var(--admin-transition);
+}
+
+.panel-heading-action .list-toolbar-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    color: var(--admin-white);
+}
+
+/* ==========================================================================
+   FORM WRAPPER
+   ========================================================================== */
+
+.form-wrapper {
+    padding: 20px;
+    background: var(--admin-white);
+    border: 1px solid var(--admin-border);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.form-wrapper .form-group {
+    margin-bottom: 20px;
+}
+
+.form-wrapper .control-label {
+    font-weight: 600;
+    color: var(--admin-text);
+}
+
+.form-wrapper .help-block {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* PrestaShop Switch Override */
+.prestashop-switch {
+    border-radius: 20px !important;
+    overflow: hidden;
+}
+
+.prestashop-switch input[type="radio"]:checked + label {
+    background: var(--admin-primary) !important;
+    color: var(--admin-white) !important;
+}
+
+/* ==========================================================================
+   ATTRIBUTES CONFIGURATION
+   ========================================================================== */
+
+.attributes-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--admin-text);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--admin-border);
+}
+
+.attributes-title i {
+    color: var(--admin-primary);
+    margin-right: 10px;
+}
+
+.attribute-panel {
+    border: 1px solid var(--admin-border);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-shadow: var(--admin-shadow);
+}
+
+.attribute-panel .panel-heading {
+    background: var(--admin-bg);
+    border-bottom: 1px solid var(--admin-border);
+    padding: 0;
+}
+
+.attribute-panel .panel-title a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--admin-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--admin-transition);
+}
+
+.attribute-panel .panel-title a:hover {
+    background: rgba(37, 185, 215, 0.1);
+    text-decoration: none;
+    color: var(--admin-primary);
+}
+
+.attribute-panel .panel-title i {
+    color: var(--admin-primary);
+    margin-right: 10px;
+    width: 20px;
+}
+
+.attribute-count {
+    background: var(--admin-primary);
+    color: var(--admin-white);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.attribute-list {
+    min-height: 60px;
+    padding: 10px 0;
+}
+
+.attribute-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: var(--admin-transition);
+}
+
+.attribute-item:last-child {
+    border-bottom: none;
+}
+
+.attribute-item:hover {
+    background: rgba(37, 185, 215, 0.05);
+}
+
+.attribute-controls {
+    margin-right: 15px;
+}
+
+.drag-handle {
+    cursor: move;
+    color: #ccc;
+    font-size: 16px;
+    padding: 5px;
+    transition: var(--admin-transition);
+}
+
+.drag-handle:hover {
+    color: var(--admin-primary);
+}
+
+.attribute-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.attribute-name {
+    flex: 2;
+    min-width: 200px;
+}
+
+.attribute-multiplier {
+    width: 80px;
+}
+
+.btn-remove-attribute {
+    flex-shrink: 0;
+}
+
+.btn-add-attribute {
+    margin: 10px 20px 0;
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+}
+
+.btn-add-attribute:hover {
+    background: #5a9b22;
+    border-color: #5a9b22;
+}
+
+/* Sortable UI States */
+.attribute-item.ui-sortable-helper {
+    background: var(--admin-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--admin-primary);
+}
+
+.attribute-item.ui-sortable-placeholder {
+    background: rgba(37, 185, 215, 0.1);
+    border: 2px dashed var(--admin-primary);
+    height: 50px;
+}
+
+/* ==========================================================================
+   PRICING MATRIX
+   ========================================================================== */
+
+#pricing-matrix-panel .panel-heading {
+    background: var(--admin-white);
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+#pricing-matrix-panel .panel-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--admin-text);
+}
+
+.panel-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.panel-actions .btn {
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+.pricing-matrix-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.pricing-matrix {
+    min-width: 800px;
+    margin-bottom: 0;
+}
+
+.pricing-matrix th {
+    background: var(--admin-bg);
+    color: var(--admin-text);
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid var(--admin-border);
+    padding: 12px 8px;
+}
+
+.pricing-matrix td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid var(--admin-border);
+    padding: 8px;
+}
+
+.quantity-header,
+.quantity-cell {
+    background: rgba(37, 185, 215, 0.1);
+    font-weight: 600;
+}
+
+.delivery-header {
+    min-width: 100px;
+}
+
+.delivery-header[data-days="3"] {
+    background: rgba(244, 127, 0, 0.1);
+}
+
+.delivery-header[data-days="5"] {
+    background: rgba(114, 192, 44, 0.1);
+}
+
+.delivery-header[data-days="7"],
+.delivery-header[data-days="10"],
+.delivery-header[data-days="14"] {
+    background: rgba(91, 192, 222, 0.1);
+}
+
+.quantity-input {
+    width: 80px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.price-input {
+    width: 90px;
+    text-align: center;
+}
+
+.price-input:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 5px rgba(37, 185, 215, 0.3);
+}
+
+.actions-header,
+.actions-cell {
+    width: 80px;
+}
+
+.btn-remove-row {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.btn-add-quantity {
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+    margin: 10px;
+}
+
+.btn-add-quantity:hover {
+    background: #5a9b22;
+    border-color: #5a9b22;
+}
+
+/* ==========================================================================
+   ADVANCED TOOLS
+   ========================================================================== */
+
+.advanced-tools {
+    border: 2px dashed var(--admin-border);
+    background: var(--admin-bg);
+}
+
+.advanced-tools .panel-heading {
+    background: var(--admin-secondary);
+    color: var(--admin-white);
+}
+
+.advanced-tools h4 {
+    color: var(--admin-text);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.test-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.test-calculator input,
+.test-calculator select {
+    font-size: 12px;
+    padding: 6px 10px;
+}
+
+.test-result {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--admin-white);
+    border: 1px solid var(--admin-border);
+    border-radius: 4px;
+    font-weight: 600;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-result.success {
+    color: var(--admin-success);
+    border-color: var(--admin-success);
+    background: rgba(114, 192, 44, 0.1);
+}
+
+.test-result.error {
+    color: var(--admin-danger);
+    border-color: var(--admin-danger);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+/* ==========================================================================
+   CSV IMPORT MODAL
+   ========================================================================== */
+
+#csv-import-modal .modal-header {
+    background: var(--admin-primary);
+    color: var(--admin-white);
+}
+
+#csv-import-modal .modal-header .close {
+    color: var(--admin-white);
+    opacity: 0.8;
+}
+
+#csv-import-modal .modal-header .close:hover {
+    opacity: 1;
+}
+
+#csv-import-modal .modal-body p {
+    background: rgba(37, 185, 215, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   SUBMIT ACTIONS
+   ========================================================================== */
+
+.panel-footer {
+    background: var(--admin-bg);
+    border-top: 1px solid var(--admin-border);
+    padding: 15px 20px;
+}
+
+.panel-footer .btn {
+    font-weight: 600;
+}
+
+.panel-footer .btn-default {
+    background: var(--admin-primary);
+    border-color: var(--admin-primary);
+    color: var(--admin-white);
+}
+
+.panel-footer .btn-default:hover {
+    background: #1fa0b8;
+    border-color: #1fa0b8;
+}
+
+.panel-footer .btn-warning {
+    background: var(--admin-warning);
+    border-color: var(--admin-warning);
+    color: var(--admin-white);
+}
+
+.panel-footer .btn-warning:hover {
+    background: #d46800;
+    border-color: #d46800;
+}
+
+/* ==========================================================================
+   LOADING STATES
+   ========================================================================== */
+
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--admin-border);
+    border-top: 2px solid var(--admin-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ==========================================================================
+   SUCCESS/ERROR STATES
+   ========================================================================== */
+
+.form-group.has-success .form-control {
+    border-color: var(--admin-success);
+    box-shadow: 0 0 5px rgba(114, 192, 44, 0.3);
+}
+
+.form-group.has-error .form-control {
+    border-color: var(--admin-danger);
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+}
+
+.alert-success {
+    background: rgba(114, 192, 44, 0.1);
+    border-color: var(--admin-success);
+    color: #3c763d;
+}
+
+.alert-danger {
+    background: rgba(231, 76, 60, 0.1);
+    border-color: var(--admin-danger);
+    color: #a94442;
+}
+
+.alert-info {
+    background: rgba(37, 185, 215, 0.1);
+    border-color: var(--admin-primary);
+    color: #31708f;
+}
+
+/* ==========================================================================
+   NOTIFICATIONS
+   ========================================================================== */
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: var(--admin-white);
+    font-weight: 600;
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: var(--admin-success);
+}
+
+.notification.error {
+    background: var(--admin-danger);
+}
+
+.notification.info {
+    background: var(--admin-primary);
+}
+
+.notification.warning {
+    background: var(--admin-warning);
+}
+
+.notification .close {
+    float: right;
+    margin-left: 15px;
+    color: var(--admin-white);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.notification .close:hover {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADMIN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .form-wrapper {
+        padding: 15px;
+    }
+    
+    .attribute-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .attribute-name {
+        min-width: auto;
+    }
+    
+    .panel-actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .panel-actions .btn {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+    
+    .pricing-matrix-container {
+        margin: -20px;
+        padding: 20px;
+    }
+    
+    .pricing-matrix th,
+    .pricing-matrix td {
+        padding: 6px 4px;
+        font-size: 12px;
+    }
+    
+    .quantity-input,
+    .price-input {
+        width: 70px;
+        font-size: 12px;
+    }
+    
+    .advanced-tools .row {
+        flex-direction: column;
+    }
+    
+    .advanced-tools .col-md-4 {
+        margin-bottom: 20px;
+    }
+    
+    .panel-footer {
+        padding: 10px 15px;
+    }
+    
+    .panel-footer .btn {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    #custom-product-configuration {
+        margin: 10px;
+    }
+    
+    .form-wrapper {
+        padding: 10px;
+    }
+    
+    .attribute-item {
+        padding: 8px 15px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .attribute-controls {
+        margin-right: 0;
+        text-align: center;
+    }
+    
+    .pricing-matrix th,
+    .pricing-matrix td {
+        padding: 4px 2px;
+        font-size: 11px;
+    }
+    
+    .quantity-input,
+    .price-input {
+        width: 60px;
+        font-size: 11px;
+    }
+    
+    .test-calculator {
+        gap: 8px;
+    }
+    
+    .notification {
+        min-width: 250px;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES FOR ADMIN
+   ========================================================================== */
+
+@media print {
+    .panel-heading-action,
+    .panel-actions,
+    .advanced-tools,
+    .panel-footer,
+    .btn,
+    .notification {
+        display: none !important;
+    }
+    
+    .panel {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .pricing-matrix {
+        font-size: 10px;
+    }
+    
+    .pricing-matrix th,
+    .pricing-matrix td {
+        padding: 3px;
+        border: 1px solid #000;
+    }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY FOR ADMIN
+   ========================================================================== */
+
+.btn:focus,
+.form-control:focus,
+.attribute-item:focus {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+}
+
+.drag-handle:focus {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+    color: var(--admin-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================================
+   DARK MODE SUPPORT (if admin supports it)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --admin-text: #e0e0e0;
+        --admin-border: #404040;
+        --admin-bg: #2a2a2a;
+        --admin-white: #1a1a1a;
+    }
+    
+    .form-wrapper,
+    .attribute-panel,
+    .pricing-matrix {
+        background: var(--admin-white);
+        color: var(--admin-text);
+    }
+    
+    .pricing-matrix th,
+    .pricing-matrix td {
+        border-color: var(--admin-border);
+    }
+    
+    .form-control {
+        background: var(--admin-white);
+        color: var(--admin-text);
+        border-color: var(--admin-border);
+    }
+}

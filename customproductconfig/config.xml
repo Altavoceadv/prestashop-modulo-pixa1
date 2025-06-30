@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>customproductconfig</name>
+    <displayName><![CDATA[Custom Product Configurator]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Configuratore avanzato per prodotti con matrice prezzi e date di consegna per scatole di panettoni di Natale e prodotti personalizzabili]]></description>
+    <author><![CDATA[Your Company]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <confirmUninstall><![CDATA[Sei sicuro di voler disinstallare questo modulo? Tutti i dati di configurazione saranno persi.]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+    <limited_countries></limited_countries>
+    
+    <!-- PrestaShop compatibility -->
+    <compatibility>
+        <min_ps_version>8.0.0</min_ps_version>
+        <max_ps_version>8.99.99</max_ps_version>
+    </compatibility>
+    
+    <!-- Dependencies -->
+    <dependencies>
+        <php>
+            <min_version>7.4</min_version>
+            <max_version>8.3</max_version>
+        </php>
+        <mysql>
+            <min_version>5.7</min_version>
+        </mysql>
+    </dependencies>
+    
+    <!-- Module features -->
+    <features>
+        <feature>product_customization</feature>
+        <feature>pricing_matrix</feature>
+        <feature>delivery_calculation</feature>
+        <feature>ajax_interface</feature>
+        <feature>responsive_design</feature>
+        <feature>admin_panel</feature>
+        <feature>csv_import_export</feature>
+        <feature>multi_attribute</feature>
+    </features>
+    
+    <!-- Hooks registration -->
+    <hooks>
+        <hook>displayProductAdditionalInfo</hook>
+        <hook>displayBackOfficeHeader</hook>
+        <hook>displayHeader</hook>
+        <hook>displayAdminProductsExtra</hook>
+        <hook>actionProductSave</hook>
+        <hook>actionCartSave</hook>
+        <hook>displayProductButtons</hook>
+        <hook>displayShoppingCartFooter</hook>
+        <hook>displayOrderConfirmation</hook>
+    </hooks>
+    
+    <!-- Configuration options -->
+    <configuration>
+        <option>
+            <name>CUSTOM_PRODUCT_DELIVERY_DAYS</name>
+            <type>string</type>
+            <default>3,5,7,10,14</default>
+            <description>Giorni di consegna disponibili (separati da virgola)</description>
+        </option>
+        <option>
+            <name>CUSTOM_PRODUCT_HOLIDAYS</name>
+            <type>text</type>
+            <default></default>
+            <description>Festività (una per riga in formato YYYY-MM-DD)</description>
+        </option>
+        <option>
+            <name>CUSTOM_PRODUCT_CUTOFF_TIME</name>
+            <type>string</type>
+            <default>16:00</default>
+            <description>Orario limite ordini (formato HH:MM)</description>
+        </option>
+        <option>
+            <name>CUSTOM_PRODUCT_WORKING_DAYS</name>
+            <type>string</type>
+            <default>1,2,3,4,5</default>
+            <description>Giorni lavorativi (1=Lunedì, 7=Domenica)</description>
+        </option>
+        <option>
+            <name>CUSTOM_PRODUCT_CACHE_ENABLED</name>
+            <type>boolean</type>
+            <default>true</default>
+            <description>Abilita cache per migliorare le performance</description>
+        </option>
+        <option>
+            <name>CUSTOM_PRODUCT_DEBUG_MODE</name>
+            <type>boolean</type>
+            <default>false</default>
+            <description>Modalità debug per sviluppatori</description>
+        </option>
+    </configuration>
+    
+    <!-- Database tables -->
+    <database>
+        <table name="custom_product_config">
+            <description>Configurazione principale prodotti personalizzabili</description>
+            <engine>InnoDB</engine>
+            <charset>utf8mb4</charset>
+            <collation>utf8mb4_unicode_ci</collation>
+        </table>
+        <table name="custom_product_attribute">
+            <description>Attributi personalizzati per prodotti</description>
+            <engine>InnoDB</engine>
+            <charset>utf8mb4</charset>
+            <collation>utf8mb4_unicode_ci</collation>
+        </table>
+        <table name="custom_product_pricing">
+            <description>Matrice prezzi per quantità e giorni di consegna</description>
+            <engine>InnoDB</engine>
+            <charset>utf8mb4</charset>
+            <collation>utf8mb4_unicode_ci</collation>
+        </table>
+        <table name="custom_cart_product">
+            <description>Personalizzazioni prodotti nel carrello</description>
+            <engine>InnoDB</engine>
+            <charset>utf8mb4</charset>
+            <collation>utf8mb4_unicode_ci</collation>
+        </table>
+        <table name="custom_order_product">
+            <description>Personalizzazioni prodotti negli ordini</description>
+            <engine>InnoDB</engine>
+            <charset>utf8mb4</charset>
+            <collation>utf8mb4_unicode_ci</collation>
+        </table>
+    </database>
+    
+    <!-- Performance settings -->
+    <performance>
+        <cache_enabled>true</cache_enabled>
+        <cache_lifetime>3600</cache_lifetime>
+        <lazy_loading>true</lazy_loading>
+        <minify_assets>true</minify_assets>
+        <compress_images>true</compress_images>
+    </performance>
+    
+    <!-- Security settings -->
+    <security>
+        <csrf_protection>true</csrf_protection>
+        <sql_injection_protection>true</sql_injection_protection>
+        <xss_protection>true</xss_protection>
+        <file_upload_validation>true</file_upload_validation>
+    </security>
+    
+    <!-- Internationalization -->
+    <languages>
+        <language>it</language>
+        <language>en</language>
+        <language>fr</language>
+        <language>es</language>
+        <language>de</language>
+    </languages>
+    
+    <!-- Module assets -->
+    <assets>
+        <css>
+            <file>views/css/front.css</file>
+            <file>views/css/admin.css</file>
+        </css>
+        <js>
+            <file>views/js/front.js</file>
+            <file>views/js/admin.js</file>
+        </js>
+        <images>
+            <directory>views/img/</directory>
+            <directory>views/img/attributes/</directory>
+        </images>
+    </assets>
+    
+    <!-- Module settings -->
+    <settings>
+        <auto_install_sample_data>false</auto_install_sample_data>
+        <create_demo_products>false</create_demo_products>
+        <enable_responsive_mode>true</enable_responsive_mode>
+        <enable_mobile_optimization>true</enable_mobile_optimization>
+        <enable_accessibility>true</enable_accessibility>
+    </settings>
+    
+    <!-- API endpoints -->
+    <api>
+        <endpoint>
+            <path>ajax</path>
+            <method>POST</method>
+            <actions>
+                <action>getDeliveryDates</action>
+                <action>calculatePrice</action>
+                <action>validateConfiguration</action>
+                <action>addToCart</action>
+            </actions>
+        </endpoint>
+        <endpoint>
+            <path>admin</path>
+            <method>POST</method>
+            <actions>
+                <action>saveConfiguration</action>
+                <action>loadConfiguration</action>
+                <action>generateMatrix</action>
+                <action>importCSV</action>
+                <action>exportCSV</action>
+                <action>copyConfiguration</action>
+                <action>calculatePrice</action>
+            </actions>
+        </endpoint>
+    </api>
+    
+    <!-- Backup configuration -->
+    <backup>
+        <include_configuration>true</include_configuration>
+        <include_custom_data>true</include_custom_data>
+        <exclude_cache>true</exclude_cache>
+        <exclude_logs>true</exclude_logs>
+    </backup>
+    
+    <!-- Update settings -->
+    <updates>
+        <auto_check>true</auto_check>
+        <update_server>https://updates.yourcompany.com/prestashop/</update_server>
+        <backup_before_update>true</backup_before_update>
+    </updates>
+    
+    <!-- Logging configuration -->
+    <logging>
+        <enable_logging>true</enable_logging>
+        <log_level>INFO</log_level>
+        <log_file>logs/customproductconfig.log</log_file>
+        <max_log_size>10MB</max_log_size>
+        <rotate_logs>true</rotate_logs>
+    </logging>
+    
+    <!-- Email notifications -->
+    <email>
+        <notify_admin_on_error>true</notify_admin_on_error>
+        <notify_admin_on_update>true</notify_admin_on_update>
+        <admin_email></admin_email>
+    </email>
+    
+    <!-- SEO settings -->
+    <seo>
+        <generate_meta_tags>true</generate_meta_tags>
+        <optimize_urls>true</optimize_urls>
+        <enable_schema_markup>true</enable_schema_markup>
+    </seo>
+    
+    <!-- Analytics -->
+    <analytics>
+        <track_configuration_usage>true</track_configuration_usage>
+        <track_popular_attributes>true</track_popular_attributes>
+        <track_conversion_rate>true</track_conversion_rate>
+        <anonymous_data_only>true</anonymous_data_only>
+    </analytics>
+    
+    <!-- Third-party integrations -->
+    <integrations>
+        <google_analytics>supported</google_analytics>
+        <facebook_pixel>supported</facebook_pixel>
+        <mailchimp>supported</mailchimp>
+        <zapier>supported</zapier>
+    </integrations>
+</module>
